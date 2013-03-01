@@ -1,0 +1,22 @@
+<!-- 
+<%= render '/refinery/content_page' %>
+ -->
+
+<section class="no_body_content_left no_body_content_right" id="body_content">
+	<h1 id="body_content_title"><%= page_title %></h1>
+
+<% unless refinery_menu_pages.reject{|p| p.parent_id != @page.root.id }.size == 0 %>
+<section id="side_nav">
+
+	<%= render :partial => '/refinery/menu',
+	  :locals => {
+	  :dom_id => 'submenu',
+	  :css => 'menu',
+	  :roots => refinery_menu_pages.reject{|p| p.parent_id != @page.root.id }
+	} %>
+
+</section>
+<% end %>
+
+<section id="body"><%=raw @page.content_for(:body) %></section>
+</section>
