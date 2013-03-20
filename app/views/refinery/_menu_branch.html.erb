@@ -5,9 +5,12 @@
 -%>
   <% if ( (children = menu_branch.children unless hide_children).present? &&
           (!local_assigns[:menu_levels] || menu_branch.ancestors.length < local_assigns[:menu_levels]) ) -%>
-    <li<%= ['', css].compact.join(' ').gsub(/\ *$/, '').html_safe %>>
-    <%= link_to(menu_branch.title, refinery.url_for(menu_branch.url), :class => 'dropdown-toggle') -%>
-    <ul class='clearfix'>
+    <li class="dropdown"<%= ['', css].compact.join(' ').gsub(/\ *$/, '').html_safe %>>
+    <%= link_to(refinery.url_for(menu_branch.url), :class => 'dropdown-toggle', data: { toggle: 'dropdown' })  do %>
+      <%= menu_branch.title %>
+      <b class="caret"></b>
+    <% end %>
+    <ul class='dropdown-menu'>
       <%= render :partial => '/refinery/menu_branch', :collection => children,
                  :locals => {
                    :apply_css => local_assigns[:apply_css],

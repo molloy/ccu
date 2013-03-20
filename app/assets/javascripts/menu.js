@@ -1,5 +1,5 @@
-$(document).ready(function(){
-	$("#menu ul").superfish({
-		autoArrows:  false
-	});
-});
+// $(document).ready(function(){
+// 	$("#menu ul").superfish({
+// 		autoArrows:  false
+// 	});
+// });

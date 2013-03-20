@@ -1,8 +1,13 @@
-<h1 id='logo'>
-<!--   <%= link_to Refinery::Core.site_name, refinery.root_path %> -->
-    <%= link_to image_tag("logo.gif"), refinery.root_path %>
-</h1>
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</a>
+<%= link_to image_tag('logo.gif'), refinery.root_path, :class => "brand" %>
+
+<div class="nav-collapse">
 <%= render(:partial => "/refinery/menu", :locals => {
              :dom_id => 'menu',
-             :css => 'nav pull-right'
+             :css => 'nav'
            }) %>
+</div>

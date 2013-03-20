@@ -2,24 +2,51 @@
 <%= render '/refinery/html_tag' %>
   <% site_bar = render('/refinery/site_bar', :head => true) -%>
   <%= render '/refinery/head' %>
+
+  <% content_for :meta do %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <% end %>
+  
   <body>
-    <%= site_bar -%>
-    <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
-    <div id="page_container" class="container-fluid">
-      <header class="navbar navbar-fixed-top">
+    <div id="wrap">
+      <%= site_bar -%>
+      <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+      <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
-          <div class="container">      
+          <div class="container-fluid">      
             <%= render '/refinery/header' -%>
           </div>
         </div>
-      </header>
-      <section id="page">
-        <%= yield %>
-      </section>
-      <footer>
-        <%= render '/refinery/footer' -%>
-      </footer>
+      </div>
+
+      <div id="page_container" class="container-fluid">
+        <div class="row-fluid">
+          <% if @page.root.children.length > 1 %>
+          <div class="span3">
+            <div id='sidenav'>
+              <%= render :partial => "/refinery/menu", :locals => {
+                :roots => Refinery::Menu.new(Refinery::Page.fast_menu.where(:parent_id => @page.root.id)),
+                :css => "nav nav-tabs nav-stacked"
+              } %>
+            </div>
+          </div>
+          <div class="span9">
+          <% else %>
+          <div class="span12">
+          <% end %>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+
+      <div id="push"></div>
+      
+      <%= render '/refinery/javascripts' %>
     </div>
-    <%= render '/refinery/javascripts' %>
+    <div id="footer">
+      <div class="container">
+        <%= render '/refinery/footer' -%>
+      </div>
+    </div>
   </body>
 </html>
