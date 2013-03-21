@@ -9,10 +9,10 @@
   
   <body>
     <div id="wrap">
-      <%= site_bar -%>
       <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
       <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
+            <%= site_bar -%>
           <div class="container-fluid">      
             <%= render '/refinery/header' -%>
           </div>
