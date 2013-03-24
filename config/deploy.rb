@@ -1,8 +1,14 @@
-set :stages, %w(production staging)
-set :default_stage, "production"
-require 'capistrano/ext/multistage'
+#production.rb
+set :user, "ec2-user"
+server "ec2-184-73-13-170.compute-1.amazonaws.com", :app, :web, :db, :primary => true
+ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/jinny2.pem"]
+
+load "deploy/assets"
+# set :stages, %w(production staging)
+# set :default_stage, "production"
+# require 'capistrano/ext/multistage'
 require 'rvm/capistrano'
-require 'bundler/capistrano'
+# require 'bundler/capistrano'
 
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
