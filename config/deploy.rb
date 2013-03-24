@@ -7,7 +7,7 @@ load "deploy/assets"
 # set :stages, %w(production staging)
 # set :default_stage, "production"
 # require 'capistrano/ext/multistage'
-# require 'rvm/capistrano'
+require 'rvm/capistrano'
 require 'bundler/capistrano'
 
 ssh_options[:forward_agent] = true
@@ -58,8 +58,6 @@ after "assetsrecompile", "deploy:fix_permission"
 # Clean-up old releases
 after "deploy:restart", "deploy:cleanup"
 
-before "bundle:install", "deploy:gems"
-
 # Unicorn config
 set :unicorn_config, "#{current_path}/config/unicorn.rb"
 set :unicorn_binary, "bash -c 'source ~/.rvm/scripts/rvm && bundle exec unicorn_rails -c #{unicorn_config} -E #{rails_env} -D'"
@@ -67,14 +65,6 @@ set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 set :su_rails, "sudo -u #{user_rails}"
 
 namespace :deploy do
-  desc "expand the gems"
-  task :gems, :roles => :web, :except => { :no_release => true } do 
-    run "cd #{latest_release}; gem install bundler" 
-    # run "cd #{current_path}; #{shared_path}/bin/bundle unlock" 
-    # run "cd #{current_path}; nice -19 #{shared_path}/bin/bundle install vendor/" # nice -19 is very important otherwise DH will kill the process! 
-    # run "cd #{current_path}; #{shared_path}/bin/bundle lock" 
-  end 
-
   task :start, :roles => :app, :except => { :no_release => true } do
     # Start unicorn server using sudo (rails)
     run "cd #{current_path} && #{su_rails} #{unicorn_binary}"
