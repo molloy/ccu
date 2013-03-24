@@ -7,8 +7,8 @@ load "deploy/assets"
 # set :stages, %w(production staging)
 # set :default_stage, "production"
 # require 'capistrano/ext/multistage'
-require 'rvm/capistrano'
-# require 'bundler/capistrano'
+# require 'rvm/capistrano'
+require 'bundler/capistrano'
 
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
