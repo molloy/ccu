@@ -4,6 +4,8 @@ server "ec2-184-73-13-170.compute-1.amazonaws.com", :app, :web, :db, :primary =>
 ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/jinny2.pem"]
 
 load 'deploy/assets'
+set :bundle_flags,    ""
+
 # set :stages, %w(production staging)
 # set :default_stage, "production"
 # require 'capistrano/ext/multistage'
@@ -112,11 +114,11 @@ namespace :deploy do
       # If this is our first deploy - don't check for the previous version
       if remote_file_exists?(current_path)
         from = source.next_revision(current_revision)
-        if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+        # if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
           run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assetsrecompile}
-        else
-          logger.info "Skipping asset pre-compilation because there were no asset changes"
-        end
+        # else
+          # logger.info "Skipping asset pre-compilation because there were no asset changes"
+        # end
       else
         run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assetsrecompile}
       end
