@@ -30,6 +30,7 @@ require 'bundler/setup'
 # ENV['BUNDLE_GEMFILE'] = File.expand_path('../Gemfile', File.dirname(__FILE__))
 # require 'bundler/setup'
 
+RAILS_ROOT = APP_ROOT
 worker_processes 4
 working_directory APP_ROOT
 

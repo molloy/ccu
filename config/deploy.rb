@@ -8,7 +8,7 @@ ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/jinny2.pem"]
 # set :default_stage, "production"
 # require 'capistrano/ext/multistage'
 require 'rvm/capistrano'
-# require 'bundler/capistrano'
+require 'bundler/capistrano'
 
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
@@ -58,7 +58,7 @@ after "assetsrecompile", "deploy:fix_permission"
 # Clean-up old releases
 after "deploy:restart", "deploy:cleanup"
 
-# before "deploy:start", "deploy:bundleinstall"
+before "deploy:start", "deploy:bundleinstall"
 
 # Unicorn config
 set :unicorn_config, "#{current_path}/config/unicorn.rb"
