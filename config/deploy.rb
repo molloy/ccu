@@ -58,20 +58,13 @@ after "assetsrecompile", "deploy:fix_permission"
 # Clean-up old releases
 after "deploy:restart", "deploy:cleanup"
 
-before "deploy:start", "deploy:bundleinstall"
-
 # Unicorn config
 set :unicorn_config, "#{current_path}/config/unicorn.rb"
 set :unicorn_binary, "bash -c 'source ~/.rvm/scripts/rvm && bundle exec unicorn_rails -c #{unicorn_config} -E #{rails_env} -D'"
 set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 set :su_rails, "sudo -u #{user_rails}"
-set :bundleinstall_binary, "bundle install"
 
 namespace :deploy do
-  task :bundleinstall, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && #{bundleinstall_binary}"
-  end
-
   task :start, :roles => :app, :except => { :no_release => true } do
     # Start unicorn server using sudo (rails)
     run "cd #{current_path} && #{su_rails} #{unicorn_binary}"
