@@ -1,4 +1,30 @@
-<p>
-  <%= t('.copyright', :year => Time.now.year,
-                      :site_name => Refinery::Core.site_name) %>
-</p>
+<div id="footer" class="navbar navbar-fixed-bottom">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12 footer-centered">
+          <span class="footer-centered">
+          <%= t('.copyright', :year => Time.now.year, :site_name => Refinery::Core.site_name) %>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="span9">
+    <span class="footer-right">
+    <p>California Central University, 520 S. La Fayette Park Pl. Suite #103 Los Angeles, CA 90057 U.S.A.</p>
+    <p>Tel: 213-381-7007 Tel: 818-307-4655 Fax: 818-435-2441 Email: calcentraluni@gmail.com</p>
+    </span>
+</div>
+ -->
+<!-- <div class="footer-container">
+    <div class="footer-ghost">
+        <div class="footer-centered">
+            <%= t('.copyright', :year => Time.now.year, :site_name => Refinery::Core.site_name) %>
+        </div>
+        <div class="footer-righted">
+            <%= t('.copyright', :year => Time.now.year, :site_name => Refinery::Core.site_name) %>
+        </div>
+    </div>
+</div>
