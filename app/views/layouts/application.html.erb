@@ -8,7 +8,6 @@
   <% end %>
   
   <body>
-    <div id="wrap">
       <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
       <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -39,14 +38,11 @@
         </div>
       </div>
 
-      <div id="push"></div>
-      
       <%= render '/refinery/javascripts' %>
-    </div>
-    <div id="footer">
-      <div class="container">
-        <%= render '/refinery/footer' -%>
+      <div id="footer" class="navbar navbar-fixed-bottom">
+        <div class="container-fluid">
+          <%= render '/refinery/footer' -%>
+        </div>
       </div>
-    </div>
   </body>
 </html>
