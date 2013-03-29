@@ -55,7 +55,7 @@ after "deploy:setup", "deploy:fix_setup_permissions"
 # Fix permissions
 before "deploy:start", "deploy:fix_permissions"
 after "deploy:restart", "deploy:fix_permissions"
-after "assetsrecompile", "deploy:fix_permission"
+after "assets:precompile", "deploy:fix_permission"
 
 # Clean-up old releases
 after "deploy:restart", "deploy:cleanup"
