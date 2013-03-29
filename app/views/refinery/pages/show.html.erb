@@ -1,0 +1,8 @@
+<% [@page.ancestors, @page].flatten.collect.each_with_index do |p, idx| %>
+	<% if idx == 0 %>
+		<h1 class="heading"><%= p.title %></h1>
+	<% else %>
+		<h2 class="heading"><%= p.title %></h2>
+	<% end %>
+<% end %>
+<%= render '/refinery/content_page' %>
