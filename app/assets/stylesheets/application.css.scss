@@ -22,7 +22,7 @@ $navbarBackground: #ffffff;
 @import "bootstrap-responsive";
 
 body {
-  background-image: url(asset_path('cloud22.jpg', image));
+  background-image: url(asset_path('cloud22_opt.jpg', image));
   -webkit-background-size: cover;
      -moz-background-size: cover;
        -o-background-size: cover;
@@ -188,7 +188,7 @@ body {
         td:first-child {
           width: 75px;
         }
-        
+
         td:last-child {
           width: 50px;
         }
