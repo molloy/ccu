@@ -141,6 +141,10 @@ body {
         th, td {
           border: 1px solid $linkColor;
         }
+
+        th {
+          background-color: lightGray;
+        }
       }
 
       table.TableCurriculum {
