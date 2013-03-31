@@ -131,13 +131,13 @@ body {
           padding-right: 5px;
           font-size: $fontSizeSmall;
         }
+
+        tfoot {
+          background-color: lightGray;
+        }
       }
 
-      tfoot {
-        background-color: lightGray;
-      }
-
-      table.Table {
+      table.TableBordered {
         th, td {
           border: 1px solid $linkColor;
         }
@@ -147,7 +147,7 @@ body {
         }
       }
 
-      table.TableCurriculum {
+      table.Table {
         th, td {
           border: 1px solid $linkColor;
         }
@@ -165,9 +165,7 @@ body {
           th:last-child {
             width: 400px !important;
           }
-        }
 
-        tbody {
           tr {
             td:last-child {
               padding: 0;
@@ -175,7 +173,7 @@ body {
           }
         }
 
-        table.Table02 {
+        .Table02 {
           width: 100%;
           margin: 0;
 
@@ -189,14 +187,15 @@ body {
           }
 
           td:first-child {
-            width: 75px; !important;
+            width: 75px !important;
           }
 
           td:last-child {
-            width: 50px; !important;
+            width: 50px !important;
           }
         }
       }
+
     }
 
   }
