@@ -141,6 +141,12 @@ body {
         th, td {
           border: 1px solid $linkColor;
         }
+      }
+
+      table.TableCurriculum {
+        th, td {
+          border: 1px solid $linkColor;
+        }
 
         tbody {
           th {
@@ -165,32 +171,26 @@ body {
           }
         }
 
-        .no_padding_border {
-          padding: 0;
-          // border: 0;
-          // border-collapse: collapse;
-        }
-      }
+        table.Table02 {
+          width: 100%;
+          margin: 0;
 
-      .Table02 {
-        width: 100%;
-        margin: 0;
+          border-collapse: collapse;
+          border-style: hidden;
 
-        border-collapse: collapse;
-        border-style: hidden;
+          td {
+            padding-left: 5px !important;
+            padding-right: 5px;
+            text-align: left;
+          }
 
-        td {
-          padding-left: 5px !important;
-          padding-right: 5px;
-          text-align: left;
-        }
+          td:first-child {
+            width: 75px; !important;
+          }
 
-        td:first-child {
-          width: 75px;
-        }
-
-        td:last-child {
-          width: 50px;
+          td:last-child {
+            width: 50px; !important;
+          }
         }
       }
     }
