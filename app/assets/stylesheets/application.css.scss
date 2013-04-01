@@ -196,6 +196,24 @@ body {
         }
       }
 
+      table.blog {
+        border-collapse: collapse;
+
+        thead {
+          background-color: lightGray;
+        }
+
+        th, td {
+          font-size: $baseFontSize;
+          text-align: left;
+          padding: 5px 5px 5px 5px;
+        }
+
+        td {
+          border-bottom: 1px solid $linkColor;
+        }
+      }
+
     }
 
   }

@@ -1,0 +1,7 @@
+<% if post.live? %>
+  <tr>
+    <td><%= link_to post.title, refinery.blog_post_path(post) %></td>
+    <td><%= post.author.username %></td>
+    <td><%=l post.published_at.to_date, :format => :default %></td>
+  </tr>
+<% end %>

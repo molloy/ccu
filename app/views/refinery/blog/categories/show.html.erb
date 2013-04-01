@@ -1,0 +1,40 @@
+<% content_for :body_content_title, @category.title %>
+
+<% content_for :body_content_left do %>
+  <h1 class="heading"><%= @category.title %></h1>
+
+  <div class="body_panel">
+
+  <% if @posts.any? %>
+    <table class="blog">
+      <thead>
+        <th>Title</th>
+        <th>Name</th>
+        <th>Date</th>
+      </thead>
+      <tbody>
+        <%= render :partial => "/refinery/blog/shared/post", :collection => @posts %>
+      </tbody>
+    </table>
+    <%= will_paginate @posts %>
+
+    <!-- <section id="blog_posts"> -->
+      <!-- <%= render :partial => "/refinery/blog/shared/post", :collection => @posts %> -->
+      <!-- <%= will_paginate @posts %> -->
+    <!-- </section> -->
+
+  <% else %>
+    <p>
+      <%= t('.no_posts') %>
+    </p>
+  <% end %>
+
+  </div>
+<% end %>
+
+<% content_for :sidenav do %>
+  <%= render :partial => "/refinery/blog/shared/categories" %>
+<% end %>
+
+<%= render :partial => "/refinery/content_page" %>
+<% content_for :stylesheets, stylesheet_link_tag('refinery/blog/frontend') %>

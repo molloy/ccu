@@ -6,12 +6,20 @@
   <% content_for :meta do %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <% end %>
+
+  <% if @page.root.children.length > 1 %>
+    <% content_for :sidenav do %>
+      <%= render :partial => "/refinery/menu", :locals => {
+        :roots => Refinery::Menu.new(Refinery::Page.fast_menu.where(:parent_id => @page.root.id)),
+        :css => "nav nav-tabs nav-stacked"
+      } %>
+    <% end %>
+  <% end %>
   
   <body>
       <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
       <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
-            <%= site_bar -%>
           <div class="container-fluid">      
             <%= render '/refinery/header' -%>
           </div>
@@ -20,13 +28,10 @@
 
       <div id="page_container" class="container-fluid">
         <div class="row-fluid">
-          <% if @page.root.children.length > 1 %>
+          <% if content_for?(:sidenav) %>
           <div class="span3">
             <div id='sidenav'>
-              <%= render :partial => "/refinery/menu", :locals => {
-                :roots => Refinery::Menu.new(Refinery::Page.fast_menu.where(:parent_id => @page.root.id)),
-                :css => "nav nav-tabs nav-stacked"
-              } %>
+              <%= yield :sidenav %>
             </div>
           </div>
           <div class="span9">
@@ -38,7 +43,10 @@
         </div>
       </div>
 
+      <div id="footer" class="navbar navbar-fixed-bottom">
+        <%= render '/refinery/footer' -%>
+        <%= site_bar -%>
+      </div>
       <%= render '/refinery/javascripts' %>
-      <%= render '/refinery/footer' -%>
   </body>
 </html>
