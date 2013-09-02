@@ -64,7 +64,7 @@ after "deploy:restart", "deploy:cleanup"
 set :unicorn_config, "#{current_path}/config/unicorn.rb"
 set :unicorn_binary, "bash -c 'source ~/.rvm/scripts/rvm && bundle exec unicorn_rails -c #{unicorn_config} -E #{rails_env} -D'"
 set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
-set :su_rails, "sudo -u #{user_rails}"
+set :su_rails, ""
 
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do
