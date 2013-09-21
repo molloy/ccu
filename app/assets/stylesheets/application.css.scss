@@ -236,10 +236,12 @@ body {
 }
 
 .footer-centered {
+  margin: 10px auto;
   text-align: center;
   display: inline-block;
   vertical-align: middle;
-  font-size: $fontSizeSmall
+  font-size: $fontSizeSmall;
+  color: #ffffff;
   // float: left;
 }
 
