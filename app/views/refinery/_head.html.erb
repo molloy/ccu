@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= yield :meta %>
 
+  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Source+Sans+Pro', :media => 'all' %>
   <%= stylesheet_link_tag "application", "formatting", "theme" %>
   <%= stylesheet_link_tag "home" if home_page? %>
   <%= yield :stylesheets %>

@@ -19,15 +19,15 @@
   <body>
       <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
       <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container-fluid">      
+        <div class="navbar-inner header">
+          <div class="container">      
             <%= render '/refinery/header' -%>
           </div>
         </div>
       </div>
 
-      <div id="page_container" class="container-fluid">
-        <div class="row-fluid">
+      <div id="page_container" class="container">
+        <div class="row">
           <% if content_for?(:sidenav) %>
           <div class="span3">
             <div id='sidenav'>
