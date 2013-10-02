@@ -105,6 +105,8 @@ body {
 
   // in main body content, wrap text images
   #body_content {
+    padding-bottom: 100px;
+    // margin-bottom: 50px;
     .inner {
       img {
         float: left;
